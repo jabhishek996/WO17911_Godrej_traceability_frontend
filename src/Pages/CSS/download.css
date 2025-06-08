@@ -1,0 +1,92 @@
+/* Main page container */
+.report-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #f8f9fc;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 40px 5%;
+  box-sizing: border-box;
+}
+
+/* Content wrapper */
+.report-wrapper {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+/* Heading */
+.report-wrapper h2 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: #1a202c;
+  text-align: center;
+}
+
+/* Date input section */
+.date-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.date-input-section label {
+  font-size: 14px;
+  color: #2d3748;
+}
+
+.date-input-section input[type="date"] {
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.action-button {
+  background: #3182ce;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.action-button:hover {
+  background: #2563eb;
+}
+
+.action-button:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+}
+
+/* Message Display */
+.message {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #2d3748;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .report-wrapper {
+    padding: 24px;
+  }
+
+  .action-button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}

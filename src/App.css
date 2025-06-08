@@ -1,0 +1,33 @@
+.App {
+  width: 100%;
+  /* height: 400px; */
+  /* padding: 2rem; */
+  text-align: center;
+}
+
+
+.pageContaint{
+  width: 100%;
+}
+.content{
+   
+padding: 20px;
+}
+
+
+/* App.css */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.pageContaint {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1; /* Fills the remaining space between navbar and footer */
+}

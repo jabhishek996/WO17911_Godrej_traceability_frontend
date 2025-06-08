@@ -1,0 +1,73 @@
+.table-container {
+  overflow-x: auto;
+
+  padding: 20px;
+  background-color: #ecefffc2;
+}
+
+.battery-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+   
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+     transition: all 0.3s ease-in-out;
+}
+
+.battery-table:hover {
+ box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+
+.battery-table th,
+.battery-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  background-color: #3182ce;
+  color: #fff;
+  text-align: center;
+}
+
+.battery-table thead {
+  background-color: #3182ce;
+  color: white;
+}
+
+
+.battery-table td {
+  color: rgb(77, 75, 75);
+  background-color: #ffff;
+}
+
+.search_btn{
+ background-color: #3182ce;
+  padding: 0.5rem 1rem;
+   margin-Left: 0.5rem; 
+   font-Size: 1rem;
+    cursor: pointer;
+    background-color: #3182ce;
+    color:#fff;
+    border: none;
+}
+
+.search_btn:hover{
+  background-color: #61bde2b4;
+}
+
+
+/* BatteryTables.css */
+.download-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+@media print {
+  .download-btn {
+    display: none;
+  }
+}

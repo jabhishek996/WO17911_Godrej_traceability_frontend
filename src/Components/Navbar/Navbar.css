@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f9fc;
+}
+
+.nav {
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e7e9f7;
+  padding: 20px 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.322);
+  position: relative;
+  z-index: 10;
+}
+
+.nav img.logo {
+  max-width: 300px;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.navlinks {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  align-items: center;
+}
+
+.navlinks li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.active_link {
+  color: #4a00fc;
+  /* border-bottom: 2px solid #0d6efd; */
+  font-weight: 600;
+}
+
+.inactive_link {
+  color: #333333;
+}
+
+.navlinks li a:hover {
+  color: #434bc4;
+  /* border-bottom: 2px solid #0d6efd; */
+}
+
+/* Mobile styles */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navlinks {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    z-index: 5;
+  }
+
+  .navlinks.open {
+    max-height: 300px;
+    padding: 12px 0;
+  }
+
+  .navlinks li {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+/* Positioning and styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* below the dropdown */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  min-width: 150px;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 15px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
