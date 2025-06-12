@@ -4,13 +4,14 @@ import Navbar from './components/Navbar/Navbar';
 import '../src/App.css'
 
 import Home from './Pages/Traceability-id';
+import Homepage from './Pages/homepage';
 import Traceability from './Pages/Traceability-batch';
 import Graphs from './Pages/Graphs';
-import Upload from './pages/upload';
+import Upload from './Pages/upload';
 import Download from './pages/download';
-import About from './pages/About';
-import Login from './pages/login';
-import Date from './pages/Traceability-date';
+import About from './Pages/About';
+import Login from './Pages/login';
+import Date from './Pages/Traceability-date';
 import Footer from './Components/Footer/Footer';
 
 // Wrapper to use hooks outside of <Router>
@@ -26,7 +27,7 @@ const App = () => {
   const location = useLocation();
 
   // Hide navbar on login page
-  const hideNavbar = location.pathname === '/login';
+  const hideNavbar = location.pathname === '/';
 
   return ( 
     <div className='pageContaint'>
@@ -34,7 +35,7 @@ const App = () => {
 
       <div className="content">
          <Routes >
-           <Route path="/" element={<Home />} />
+           <Route path="/" element={<Login />} />
         {/* <Route path="/api" element={<Home />} /> */}
         <Route path="/api/traceability/batch" element={<Traceability />} />
         <Route path="/api/traceability/id" element={<Home />} />

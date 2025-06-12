@@ -625,8 +625,8 @@ const GraphsPage = () => {
       cell_jelly_roll_dia: '#FC8452'
     };
 
-    // const timestamps = dataSource.horizontal_axis.cell_timestamp;
-    const timestamps = dataSource.horizontal_axis.cell_timestamp || [];
+    const timestamps = dataSource.horizontal_axis.cell_timestamp;
+    // const timestamps = dataSource.horizontal_axis.cell_timestamp || [];
 
 
     return (
@@ -692,7 +692,7 @@ const GraphsPage = () => {
   return (
     <div className="upload-container">
       <div className="content-wrapper">
-        <h2>Battery/Cell Graph Viewer</h2>
+        <h2> Graph Viewer</h2>
 
         {/* Toggle Mode */}
         <div className="mode-toggle">
@@ -713,6 +713,12 @@ const GraphsPage = () => {
             onClick={() => setMode('fillingTimestamp')}
           >
             Graph by Filling Timestamp
+          </button>
+          <button
+            className={`mode-btn ${mode === 'histogram' ? 'active' : ''}`}
+            onClick={() => setMode('histogram')}
+          >
+            Histogram
           </button>
         </div>
 
@@ -813,6 +819,13 @@ const GraphsPage = () => {
       </div>
     </div>
   );
+  {mode === 'histogram' && (
+          <div className="upload-box">
+            <h2>histogram Data</h2>
+          </div>)}
 };
+
+
+
 
 export default GraphsPage;

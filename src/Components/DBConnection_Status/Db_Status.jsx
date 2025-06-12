@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const DBStatusIndicator = () => {
   const [isConnected, setIsConnected] = useState(null);
 
   const fetchStatus = async () => {
     try {
-      const response = await fetch('http://192.168.1.59:7000/api/test-db-conn');
+      const response = await fetch(`${API_BASE_URL}/test-db-conn`);
       const data = await response.json();
       setIsConnected(data.STATUS === true);
     } catch (error) {
@@ -18,7 +19,7 @@ const DBStatusIndicator = () => {
     fetchStatus(); // Initial fetch
 
     const interval = setInterval(() => {
-      fetchStatus(); // Fetch every 60 seconds
+      fetchStatus(); // Fetch every 10 seconds
     }, 10000);
 
     return () => clearInterval(interval); // Cleanup
@@ -26,7 +27,7 @@ const DBStatusIndicator = () => {
 
   const getStatusText = () => {
     if (isConnected === null) return 'Checking...';
-    return isConnected ? 'Connected' : 'Not Connected';
+    return isConnected ? 'DB Connected' : 'DB Not Connected';
   };
 
   const getStatusColor = () => {
@@ -39,7 +40,7 @@ const DBStatusIndicator = () => {
       display: 'inline-flex',
       alignItems: 'center',
       padding: '6px 12px',
-      borderRadius: '20px',
+     
       background: 'rgba(255, 255, 255, 0.7)',
       boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
       fontFamily: 'Segoe UI, Roboto, sans-serif',

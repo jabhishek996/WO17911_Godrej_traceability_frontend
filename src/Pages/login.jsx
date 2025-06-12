@@ -14,7 +14,7 @@ function LoginPage() {
 
     // Hardcoded validation
     if (email === 'admin@mq.com' && password === 'admin') {
-      window.location.href = 'http://localhost:5173/api/';
+      window.location.href = '/api';
     } else {
       setError('Invalid email or password');
     }

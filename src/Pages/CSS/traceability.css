@@ -1,5 +1,6 @@
 .card-container {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
@@ -17,6 +18,7 @@
   box-sizing: border-box;
   min-width: 280px;
   transition: transform 0.2s ease, background-color 0.3s ease;
+  margin-block: 20px;
 }
 
 .card:hover {

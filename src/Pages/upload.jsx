@@ -24,8 +24,6 @@ export default function ExcelUploader() {
     if (selectedFile && selectedFile.name.endsWith('.xlsx')) {
       setFile(selectedFile);
       setStatus('');
-
-      // Parse file using SheetJS
       const reader = new FileReader();
       reader.onload = (event) => {
         const data = new Uint8Array(event.target.result);
@@ -45,11 +43,9 @@ export default function ExcelUploader() {
   const handleDrop = (e) => {
     e.preventDefault();
     const droppedFile = e.dataTransfer.files[0];
-    if (droppedFile && droppedFile.name.endsWith('.xlsx') || droppedFile.name.endsWith('.XLSX')) {
+    if (droppedFile && (droppedFile.name.endsWith('.xlsx') || droppedFile.name.endsWith('.XLSX'))) {
       setFile(droppedFile);
       setStatus('');
-
-      // Parse dropped file
       const reader = new FileReader();
       reader.onload = (event) => {
         const data = new Uint8Array(event.target.result);
@@ -120,9 +116,29 @@ export default function ExcelUploader() {
     }
   };
 
-  const handleManualSubmit = () => {
-    console.log("Manual data submitted:", manualData);
-    setStatus('Manual data submitted!');
+  const handleManualSubmit = async () => {
+    try {console.log("API_BASE_URL:", API_BASE_URL);
+
+      const response = await fetch(`${API_BASE_URL}/api/upload/end-of-line/json-form`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(manualData)
+      });
+
+      if (response.ok) {
+        setStatus('Manual data submitted successfully!');
+      } else {
+        const errorText = await response.text();
+        setStatus(`Submission failed: ${errorText}`);
+      }
+    } catch (error) {
+      console.error("Manual submission error:", error);
+      setStatus('Submission error occurred.');
+    }
+
+    console.log("Submitted JSON:", JSON.stringify(manualData, null, 2));
   };
 
   return (
@@ -211,29 +227,28 @@ export default function ExcelUploader() {
               </label>
             </div>
 
-           <table>
-  <thead>
-    <tr>
-      <th>Sr No</th>
-      <th>Cell ID</th>
-      <th>Cell OCV</th>
-      <th>Cell IR</th>
-      <th>Cell HRD</th>
-    </tr>
-  </thead>
-  <tbody>
-    {manualData.cells.map((cell, index) => (
-      <tr key={index}>
-        <td style={{textAlign:"center"}}>{index + 1}</td>
-        <td><input value={cell.id} onChange={(e) => handleManualChange(e, index, 'id')} /></td>
-        <td><input value={cell.ocv} onChange={(e) => handleManualChange(e, index, 'ocv')} /></td>
-        <td><input value={cell.ir} onChange={(e) => handleManualChange(e, index, 'ir')} /></td>
-        <td><input value={cell.hrd} onChange={(e) => handleManualChange(e, index, 'hrd')} /></td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
+            <table>
+              <thead>
+                <tr>
+                  <th>Sr No</th>
+                  <th>Cell ID</th>
+                  <th>Cell OCV</th>
+                  <th>Cell IR</th>
+                  <th>Cell HRD</th>
+                </tr>
+              </thead>
+              <tbody>
+                {manualData.cells.map((cell, index) => (
+                  <tr key={index}>
+                    <td style={{ textAlign: "center" }}>{index + 1}</td>
+                    <td><input value={cell.id} onChange={(e) => handleManualChange(e, index, 'id')} /></td>
+                    <td><input value={cell.ocv} onChange={(e) => handleManualChange(e, index, 'ocv')} /></td>
+                    <td><input value={cell.ir} onChange={(e) => handleManualChange(e, index, 'ir')} /></td>
+                    <td><input value={cell.hrd} onChange={(e) => handleManualChange(e, index, 'hrd')} /></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
             <button className="upload-btn" onClick={handleManualSubmit}>Submit</button>
             {status && <p className="upload-status">{status}</p>}
