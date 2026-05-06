@@ -74,7 +74,7 @@ const comparisonBar = {
       text: "Anode vs Cathode Comparison"
     },
     dataLabels: {
-      enabled: false
+      enabled: false  
     }
   }
 };
