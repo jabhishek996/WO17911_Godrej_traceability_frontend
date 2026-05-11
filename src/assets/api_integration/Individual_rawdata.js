@@ -30,7 +30,7 @@ export const getMeterData = async ({ meterId, date }) => {
   }
 
   try {
-    const url = new URL(`${API_BASE_URL}/api/mfm/meterData`);
+    const url = new URL(`${API_BASE_URL}/mfm/meterData`);
     url.searchParams.set("name", name);
     url.searchParams.set("date", dateValue);
 
