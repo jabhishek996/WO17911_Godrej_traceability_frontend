@@ -11,13 +11,67 @@ export default function DownloadCSV() {
   const [loading, setLoading] = useState(false);
 
   const tables = [
-    {
-      label: "Anode Mixer",
-      value: "anode_mixer",
-    },
-    // Add more tables here later
-    // { label: "Cathode Mixer", value: "cathode_mixer" },
-  ];
+  {
+    label: "Anode Mixer",
+    value: "anode_mixer",
+  },
+  {
+    label: "Anode Oven",
+    value: "anode_oven",
+  },
+  {
+    label: "Anode Thickness",
+    value: "anode_thickness",
+  },
+  {
+    label: "Cathode Oven",
+    value: "cathode_oven",
+  },
+  {
+    label: "Cathode Thickness",
+    value: "cathod_thickness",
+  },
+  {
+    label: "Laponite",
+    value: "laponite",
+  },
+  {
+    label: "Liquid Handling",
+    value: "liquid_handling",
+  },
+  {
+    label: "PHS Anode",
+    value: "phs_anode",
+  },
+  {
+    label: "PHS Cathode",
+    value: "phs_cathode",
+  },
+  {
+    label: "PLC 1",
+    value: "plc_1",
+  },
+  {
+    label: "PLC 2",
+    value: "plc_2",
+  },
+  {
+    label: "PLC 3",
+    value: "plc_3",
+  },
+  {
+    label: "Powder Handling",
+    value: "powder_handling",
+  },
+  {
+    label: "PVA Lamination",
+    value: "pva_lamination",
+  },
+  {
+    label: "Winding PLC",
+    value: "winding_plc",
+  },
+];
 
   const handleDownload = async () => {
   if (!fromDate || !toDate) {
